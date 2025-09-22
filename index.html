@@ -14,12 +14,14 @@
 
     <style>
       :root {
-        --bg: #0f172a;      /* slate-900 */
-        --panel: #111827;   /* gray-900 */
-        --text: #e5e7eb;    /* gray-200 */
-        --muted: #9ca3af;   /* gray-400 */
-        --accent: #22c55e;  /* green-500 */
-        --link: #60a5fa;    /* blue-400 */
+        --bg: #0f172a;        /* slate-900 */
+        --panel: #111827;     /* gray-900 */
+        --panel-strong: #0b1120;
+        --text: #e5e7eb;      /* gray-200 */
+        --text-strong: #f8fafc;
+        --muted: #94a3b8;     /* slate-400 */
+        --accent: #22c55e;    /* green-500 */
+        --link: #60a5fa;      /* blue-400 */
       }
       html, body { height: 100%; }
       body {
@@ -52,11 +54,33 @@
       .nav-list a:hover, .nav-list a.active { background: #1f2937; }
 
       main { grid-area: main; overflow: auto; }
-      .container { max-width: 980px; margin: 0 auto; padding: 24px; }
-      .markdown-body { background: transparent; color: var(--text); }
+      .container { max-width: 960px; margin: 32px auto; padding: 0 24px 48px; }
+      .markdown-body {
+        background: var(--panel-strong);
+        color: var(--text-strong);
+        border-radius: 14px;
+        padding: 32px 40px;
+        box-shadow: 0 18px 36px rgba(8, 11, 20, 0.28);
+      }
+      .markdown-body p,
+      .markdown-body li,
+      .markdown-body td,
+      .markdown-body th { color: var(--text-strong); }
+      .markdown-body h1,
+      .markdown-body h2,
+      .markdown-body h3,
+      .markdown-body h4,
+      .markdown-body h5 { color: var(--text-strong); }
+      .markdown-body hr { border-color: rgba(226, 232, 240, 0.18); }
       .markdown-body a { color: var(--link); }
-      .markdown-body code { background: #111827; color: #e5e7eb; }
-      .markdown-body pre code { background: transparent; }
+      .markdown-body pre,
+      .markdown-body code {
+        background: #1f2937;
+        color: #f8fafc;
+        border-radius: 6px;
+      }
+      .markdown-body pre { padding: 16px; overflow: auto; }
+      .markdown-body pre code { padding: 0; background: transparent; }
       .loading, .error { color: var(--muted); font-size: 14px; }
 
       @media (max-width: 900px) {
