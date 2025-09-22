@@ -1,0 +1,22 @@
+diff --git a/recettes/tartopoie.md b/recettes/tartopoie.md
+index 0000000..1111111 100644
+--- a/recettes/tartopoie.md
++++ b/recettes/tartopoie.md
+@@
+ # Tartopoie
+ 
+ ## Ingrédients (base)
+ - 250 g de farine
+ - 125 g de beurre
+ - 100 g de sucre
+-- 3 pommes
++- 3 pommes
++- 1 gousse de vanille (ou 1 c. à c. extrait)
+ - 1 pincée de sel
+ 
+ ## Étapes
+ 1. Préparer la pâte sablée.
+ 2. Étaler, garnir de pommes.
+-3. Cuire 35 min à 180°C.
++3. Cuire 35 min à 180°C.
++4. Laisser tiédir 15 min avant de servir.

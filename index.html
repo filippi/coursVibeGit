@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cours Git L3 – Index</title>
+    <meta name="description" content="Cours Git et GitHub – L3 Informatique (Corte)" />
+
+    <!-- GitHub Markdown CSS for nice default styling -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.2.0/github-markdown.min.css" />
+
+    <!-- Highlight.js for code blocks -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css" />
+
+    <style>
+      :root {
+        --bg: #0f172a;      /* slate-900 */
+        --panel: #111827;   /* gray-900 */
+        --text: #e5e7eb;    /* gray-200 */
+        --muted: #9ca3af;   /* gray-400 */
+        --accent: #22c55e;  /* green-500 */
+        --link: #60a5fa;    /* blue-400 */
+      }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        grid-template-rows: 56px 1fr;
+        grid-template-areas:
+          "header header"
+          "sidebar main";
+      }
+      header {
+        grid-area: header;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 16px; background: var(--panel); border-bottom: 1px solid #1f2937;
+      }
+      header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+      header a { color: var(--link); text-decoration: none; }
+
+      nav {
+        grid-area: sidebar; overflow: auto; background: var(--panel); border-right: 1px solid #1f2937;
+      }
+      .nav-section { padding: 12px 12px 4px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+      .nav-list { list-style: none; margin: 0; padding: 0 8px 16px; }
+      .nav-list li { margin: 4px 0; }
+      .nav-list a { display: block; padding: 8px 8px; border-radius: 6px; color: var(--text); text-decoration: none; }
+      .nav-list a:hover, .nav-list a.active { background: #1f2937; }
+
+      main { grid-area: main; overflow: auto; }
+      .container { max-width: 980px; margin: 0 auto; padding: 24px; }
+      .markdown-body { background: transparent; color: var(--text); }
+      .markdown-body a { color: var(--link); }
+      .markdown-body code { background: #111827; color: #e5e7eb; }
+      .markdown-body pre code { background: transparent; }
+      .loading, .error { color: var(--muted); font-size: 14px; }
+
+      @media (max-width: 900px) {
+        body { grid-template-columns: 1fr; grid-template-rows: 56px auto auto; grid-template-areas: "header" "sidebar" "main"; }
+        nav { border-right: none; border-bottom: 1px solid #1f2937; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Cours Git L3 — Index</h1>
+      <div>
+        <a href="https://learngitbranching.js.org/?locale=fr_FR&demo=" target="_blank" rel="noopener">Learn Git Branching (FR)</a>
+      </div>
+    </header>
+    <nav id="sidebar"></nav>
+    <main>
+      <div class="container">
+        <article id="content" class="markdown-body">
+          <p class="loading">Chargement…</p>
+        </article>
+      </div>
+    </main>
+
+    <!-- Dependencies via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+  </html>
