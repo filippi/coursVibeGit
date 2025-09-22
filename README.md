@@ -1,6 +1,7 @@
 # Cours Git L3 — Bases de Git et GitHub
 
-Bienvenue ! Ce dépôt contient un cours introductif à Git (partie 1) et à GitHub (partie 2) pour des étudiants de Licence 3 Informatique (Corte).
+Bienvenue ! Ce dépôt contient un cours introductif à Git (partie 1), à GitHub (partie 2) et à la collaboration avancée (partie 3) pour des étudiants de Licence 3 Informatique (Corte).
+Ce cours a été intégralement réalisé avec une IA (`xeCodex`).
 
 - Objectif: comprendre et pratiquer Git d’abord (concepts, commandes), puis connecter un dépôt local à GitHub pour collaborer et valoriser son profil.
 - Format: breakdown clair, pas-à-pas, avec exercices « recettes » et annexes.
@@ -8,7 +9,9 @@ Bienvenue ! Ce dépôt contient un cours introductif à Git (partie 1) et à Git
 ## Table des matières
 - Partie 1 — Bases de Git: `PARTIE-1-Git-Bases.md`
 - Partie 2 — GitHub et dépôts distants: `PARTIE-2-GitHub-Remotes.md`
+- Partie 3 — Collaboration, Forks & Pull Requests: `PARTIE-3-GitHub-Collaboration.md`
 - Exercices pratiques (projet recettes): `exercices/README.md`
+- Exercices GitHub (forks & PR): `exercices/github-collaboration.md`
 - Annexes (cheatsheet, patch): `annexes/Cheatsheet.md`, `annexes/exemple.patch`
 
 ## Prérequis rapides

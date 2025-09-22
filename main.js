@@ -1,33 +1,56 @@
 /* Simple Markdown site loader for the Git course */
 (function () {
-  const files = [
-    { id: 'README.md', label: 'Accueil (README)', path: 'README.md' },
-    { id: 'PARTIE-1-Git-Bases.md', label: 'Partie 1 — Bases de Git', path: 'PARTIE-1-Git-Bases.md' },
-    { id: 'PARTIE-2-GitHub-Remotes.md', label: 'Partie 2 — GitHub & remotes', path: 'PARTIE-2-GitHub-Remotes.md' },
-    { id: 'exercices/README.md', label: 'Exercices — Recettes', path: 'exercices/README.md' },
-    { id: 'exercices/learn-git-branching.md', label: 'Exercice bonus — Learn Git Branching', path: 'exercices/learn-git-branching.md' },
-    { id: 'annexes/Cheatsheet.md', label: 'Annexe — Cheatsheet', path: 'annexes/Cheatsheet.md' },
+  const sections = [
+    {
+      title: 'Cours',
+      items: [
+        { label: 'Accueil (README)', path: 'README.md' },
+        { label: 'Partie 1 — Bases de Git', path: 'PARTIE-1-Git-Bases.md' },
+        { label: 'Partie 2 — GitHub & remotes', path: 'PARTIE-2-GitHub-Remotes.md' },
+        { label: 'Partie 3 — Collaboration (Forks & PR)', path: 'PARTIE-3-GitHub-Collaboration.md' }
+      ]
+    },
+    {
+      title: 'Exercices',
+      items: [
+        { label: 'Exercices — Recettes', path: 'exercices/README.md' },
+        { label: 'Exercices — Collaboration GitHub', path: 'exercices/github-collaboration.md' },
+        { label: 'Exercice bonus — Learn Git Branching', path: 'exercices/learn-git-branching.md' }
+      ]
+    },
+    {
+      title: 'Annexes',
+      items: [
+        { label: 'Annexe — Cheatsheet', path: 'annexes/Cheatsheet.md' }
+      ]
+    }
   ];
 
-  // Build sidebar
+  const externalLinks = [
+    {
+      title: 'Ressource externe',
+      items: [
+        { label: 'Learn Git Branching (FR)', href: 'https://learngitbranching.js.org/?locale=fr_FR&demo=' }
+      ]
+    }
+  ];
+
+  const allItems = sections.flatMap(section => section.items);
+
   const sidebar = document.getElementById('sidebar');
   sidebar.innerHTML = [
-    '<div class="nav-section">Cours</div>',
-    '<ul class="nav-list">',
-    ...files.slice(0, 3).map(f => `<li><a href="#${encodeURIComponent(f.path)}" data-path="${f.path}">${f.label}</a></li>`),
-    '</ul>',
-    '<div class="nav-section">Exercices</div>',
-    '<ul class="nav-list">',
-    ...files.slice(3, 5).map(f => `<li><a href="#${encodeURIComponent(f.path)}" data-path="${f.path}">${f.label}</a></li>`),
-    '</ul>',
-    '<div class="nav-section">Annexes</div>',
-    '<ul class="nav-list">',
-    ...files.slice(5).map(f => `<li><a href="#${encodeURIComponent(f.path)}" data-path="${f.path}">${f.label}</a></li>`),
-    '</ul>',
-    '<div class="nav-section">Ressource externe</div>',
-    '<ul class="nav-list">',
-    `<li><a href="https://learngitbranching.js.org/?locale=fr_FR&demo=" target="_blank" rel="noopener">Learn Git Branching (FR)</a></li>`,
-    '</ul>'
+    ...sections.map(section => [
+      `<div class="nav-section">${section.title}</div>`,
+      '<ul class="nav-list">',
+      ...section.items.map(item => `<li><a href="#${encodeURIComponent(item.path)}" data-path="${item.path}">${item.label}</a></li>`),
+      '</ul>'
+    ].join('')),
+    ...externalLinks.map(section => [
+      `<div class="nav-section">${section.title}</div>`,
+      '<ul class="nav-list">',
+      ...section.items.map(item => `<li><a href="${item.href}" target="_blank" rel="noopener">${item.label}</a></li>`),
+      '</ul>'
+    ].join(''))
   ].join('');
 
   const content = document.getElementById('content');
@@ -55,7 +78,8 @@
       const safe = window.DOMPurify ? DOMPurify.sanitize(html) : html;
       content.innerHTML = safe;
       if (window.hljs) window.hljs.highlightAll();
-      document.title = `Cours Git L3 — ${path}`;
+      const item = allItems.find(entry => entry.path === path);
+      document.title = `Cours Git L3 — ${item ? item.label : path}`;
     } catch (e) {
       content.innerHTML = `<p class="error">Impossible de charger <code>${path}</code><br><small>${e.message}</small></p>`;
     }
@@ -68,12 +92,11 @@
   // Handle hash navigation
   function currentPathFromHash() {
     const raw = decodeURIComponent((location.hash || '').replace(/^#/, ''));
-    const found = files.find(f => f.path === raw);
-    return found ? found.path : files[0].path; // default to README
+    const found = allItems.find(item => item.path === raw);
+    return found ? found.path : 'README.md';
   }
 
   window.addEventListener('hashchange', () => loadMarkdown(currentPathFromHash()));
   // Initial load
   loadMarkdown(currentPathFromHash());
 })();
-
